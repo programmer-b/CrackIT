@@ -28,16 +28,19 @@ class Pagination extends StatelessWidget {
       return '?page=' + page;
     }
 
-    return  Container(
+    return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
       width: MediaQuery.of(context).size.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          PerPage(url: url, api: provider,),
+          PerPage(
+            url: url,
+            api: provider,
+          ),
           Txt(
               text:
-              '${provider.successMap['dataPayload']['countOnPage'] ?? ''} of ${provider.successMap['dataPayload']['totalCount'] ?? ''} records'),
+                  '${provider.successMap['dataPayload']['countOnPage'] ?? ''} of ${provider.successMap['dataPayload']['totalCount'] ?? ''} records'),
           Row(
             children: [
               IconButton(
@@ -48,8 +51,10 @@ class Pagination extends StatelessWidget {
                   onPressed: _hasPrevious()
                       ? null
                       : () {
-                    provider.get(url + _previous());
-                  }),
+                          provider.get(url +
+                              _previous() +
+                              '&per-page=${context.read<PageState>().perPageValue}');
+                        }),
               const SizedBox(
                 width: 5,
               ),
@@ -63,7 +68,7 @@ class Pagination extends StatelessWidget {
               ),
               Txt(
                 text:
-                ' ${currentPage ?? ''} / ${provider.successMap['dataPayload']['totalPages'] ?? ''} ',
+                    ' ${currentPage ?? ''} / ${provider.successMap['dataPayload']['totalPages'] ?? ''} ',
               ),
               const SizedBox(
                 width: 5,
@@ -84,8 +89,10 @@ class Pagination extends StatelessWidget {
                   onPressed: _hasNext()
                       ? null
                       : () {
-                    provider.get(url + _next());
-                  }),
+                          provider.get(url +
+                              _next() +
+                              '&per-page=${context.read<PageState>().perPageValue}');
+                        }),
             ],
           )
         ],

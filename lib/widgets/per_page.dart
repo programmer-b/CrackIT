@@ -10,14 +10,14 @@ class PerPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final pageValue = Provider.of<PageState>(context);
     return DropdownButton<int>(
-      value: perPage,
+      value: pageValue.perPageValue,
       onChanged: (value) {
         api.get(url + '?per-page=$value');
         pageValue.perPage(value!);
       },
       items: <int>[10, 25, 50, 100].map<DropdownMenuItem<int>>((int value) {
         return DropdownMenuItem<int>(
-          value: pageValue.perPageValue,
+          value: value,
           child: Txt(text: value.toString()),
         );
       }).toList(),

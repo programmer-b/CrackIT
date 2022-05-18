@@ -8,12 +8,12 @@ class CountriesScreen extends StatefulWidget {
 }
 
 class _CountriesScreenState extends State<CountriesScreen> {
-
   @override
   void didChangeDependencies() {
     Future.delayed(Duration.zero, () {
       context.read<API>().init();
-      context.read<API>().get(Urls.setup + "/countries" );
+      context.read<API>().get(Urls.setup +
+          "/countries?per-page=${context.read<PageState>().perPageValue}");
     });
 
     super.didChangeDependencies();

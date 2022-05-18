@@ -83,7 +83,7 @@ class API with ChangeNotifier {
 
   Future<void> get(String? url) async {
     String? token = await storage.read(key: 'token');
-    debugPrint(Urls.commonBase+url!);
+    debugPrint(url);
     _load();
     try {
       final response =

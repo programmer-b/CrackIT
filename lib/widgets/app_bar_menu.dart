@@ -6,30 +6,36 @@ class AppBarMenu extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  PopupMenuButton(
+    return PopupMenuButton(
         onSelected: (value) {
           switch (value) {
             case MenuItem.item1:
               {
                 Future.delayed(Duration.zero, () {
                   context.read<API>().init();
-                  context.read<API>().get(url);
+                  context.read<API>().get(url +
+                      '?per-page=${context.read<PageState>().perPageValue}');
                 });
               }
           }
         },
         itemBuilder: (context) => [
-          const PopupMenuItem(
-            child: OperationItem(text: 'Refresh', icon: Icons.rotate_left, color: Colors.green),
-            value: MenuItem.item1,
-          ),
-          const PopupMenuItem(
-            child: OperationItem(text: 'Messages', icon: Icons.message, color: Colors.green),
-            value: MenuItem.item2,
-          ),
-          const PopupMenuItem(
-              child: OperationItem(text: 'Logout', icon: Icons.logout, color: Colors.green),
-              value: MenuItem.item3)
-        ]);
+              const PopupMenuItem(
+                child: OperationItem(
+                    text: 'Refresh',
+                    icon: Icons.rotate_left,
+                    color: Colors.green),
+                value: MenuItem.item1,
+              ),
+              const PopupMenuItem(
+                child: OperationItem(
+                    text: 'Messages', icon: Icons.message, color: Colors.green),
+                value: MenuItem.item2,
+              ),
+              const PopupMenuItem(
+                  child: OperationItem(
+                      text: 'Logout', icon: Icons.logout, color: Colors.green),
+                  value: MenuItem.item3)
+            ]);
   }
 }
