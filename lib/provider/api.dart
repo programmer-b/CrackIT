@@ -83,6 +83,7 @@ class API with ChangeNotifier {
 
   Future<void> get(String? url) async {
     String? token = await storage.read(key: 'token');
+    debugPrint(Urls.commonBase+url!);
     _load();
     try {
       final response =
@@ -125,6 +126,7 @@ class API with ChangeNotifier {
     _catchError = true;
     debugPrint(e.toString());
     if (e is SocketException || e is FormatException) {
+
       _errorMessage = 'Oops! Looks like there is a connection error.';
     } else if (e is TimeoutException) {
       _errorMessage = 'Oops! Timeout was reached.';

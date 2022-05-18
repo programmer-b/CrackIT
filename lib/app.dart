@@ -19,7 +19,7 @@ part './UI/hrmis/setup/designation/designation_screen.dart';
 part './UI/hrmis/setup/employment/employment_screen.dart';
 part './UI/hrmis/setup/immigration/immigration_screen.dart';
 part './UI/hrmis/setup/organization/organization_screen.dart';
-part './api/api.dart';
+part './provider/api.dart';
 part './constants/assets.dart';
 part './constants/colors.dart';
 part './constants/enums.dart';
@@ -37,14 +37,20 @@ part './widgets/DataTable/data_table.dart';
 part './models/data_table.dart';
 part './widgets/DataTable/rows_and_columns.dart';
 part './widgets/pagination_widget.dart';
-
+part './widgets/per_page.dart';
+part './utils/search_delegate.dart';
+part './utils/operation.dart';
 part './UI/errors/api_error.dart';
+part './provider/page_state.dart';
 
 const FlutterSecureStorage storage = FlutterSecureStorage();
 final Dialog dialog = Dialog();
 final Pages pages = Pages();
 final API api = API();
 final RowsAndColumns rowsAndColumns = RowsAndColumns();
+final Operation operation = Operation();
+String currentUrl = '';
+int? perPage = 25;
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
@@ -52,7 +58,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
-      providers: [ChangeNotifierProvider<API>(create: (context) => API())],
+      providers: [
+        ChangeNotifierProvider<API>(create: (context) => API()),
+        ChangeNotifierProvider<PageState>(create: (context) => PageState())
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(

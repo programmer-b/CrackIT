@@ -7,7 +7,7 @@ class Pagination extends StatelessWidget {
   final String url;
   @override
   Widget build(BuildContext context) {
-    int currentPage = provider.successMap['dataPayload']['currentPage'];
+    int? currentPage = provider.successMap['dataPayload']['currentPage'] ?? '';
     bool _hasPrevious() {
       return currentPage == 1;
     }
@@ -17,26 +17,27 @@ class Pagination extends StatelessWidget {
     }
 
     String _next() {
-      int current = currentPage + 1;
+      int current = currentPage! + 1;
       String page = current.toString();
       return '?page=' + page;
     }
 
     String _previous() {
-      int current = currentPage - 1;
+      int current = currentPage! - 1;
       String page = current.toString();
       return '?page=' + page;
     }
 
-    return Container(
+    return  Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
       width: MediaQuery.of(context).size.width,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          PerPage(url: url, api: provider,),
           Txt(
               text:
-                  'Showing ${provider.successMap['dataPayload']['countOnPage']} of ${provider.successMap['dataPayload']['totalCount']} records'),
+              '${provider.successMap['dataPayload']['countOnPage'] ?? ''} of ${provider.successMap['dataPayload']['totalCount'] ?? ''} records'),
           Row(
             children: [
               IconButton(
@@ -47,8 +48,8 @@ class Pagination extends StatelessWidget {
                   onPressed: _hasPrevious()
                       ? null
                       : () {
-                          provider.get(url + _previous());
-                        }),
+                    provider.get(url + _previous());
+                  }),
               const SizedBox(
                 width: 5,
               ),
@@ -62,7 +63,7 @@ class Pagination extends StatelessWidget {
               ),
               Txt(
                 text:
-                    ' ${provider.successMap['dataPayload']['currentPage']} / ${provider.successMap['dataPayload']['totalPages']} ',
+                ' ${currentPage ?? ''} / ${provider.successMap['dataPayload']['totalPages'] ?? ''} ',
               ),
               const SizedBox(
                 width: 5,
@@ -83,8 +84,8 @@ class Pagination extends StatelessWidget {
                   onPressed: _hasNext()
                       ? null
                       : () {
-                          provider.get(url + _next());
-                        }),
+                    provider.get(url + _next());
+                  }),
             ],
           )
         ],
