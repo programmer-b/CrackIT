@@ -14,7 +14,7 @@ class AppBarMenu extends StatelessWidget {
                 Future.delayed(Duration.zero, () {
                   context.read<API>().init();
                   context.read<API>().get(url +
-                      '?per-page=${context.read<PageState>().perPageValue}');
+                      '?page=${context.read<PageState>().currentPage}&per-page=${context.read<PageState>().perPageValue}');
                 });
               }
           }

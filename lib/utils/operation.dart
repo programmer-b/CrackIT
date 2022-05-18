@@ -1,7 +1,8 @@
 part of 'package:crackit/app.dart';
 
-class Operation{
+class Operation {
   void operation(API provider, BuildContext context, String url) {
+    final pageState = context.read<PageState>();
     if (provider.operationSuccess) {
       Future.delayed(Duration.zero, () {
         var message = provider.successMessage;
@@ -28,9 +29,10 @@ class Operation{
     }
     if (provider.operationDone) {
       Future.delayed(Duration.zero, () {
-        context.read<API>().get(Urls.setup + url);
+        context.read<API>().get(Urls.setup +
+            url + '?page=' + pageState.currentPage +
+            '&per-page=${context.read<PageState>().perPageValue}');
       });
     }
   }
-
 }

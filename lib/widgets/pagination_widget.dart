@@ -7,6 +7,7 @@ class Pagination extends StatelessWidget {
   final String url;
   @override
   Widget build(BuildContext context) {
+    final pageState = context.read<PageState>();
     int? currentPage = provider.successMap['dataPayload']['currentPage'] ?? '';
     bool _hasPrevious() {
       return currentPage == 1;
@@ -19,12 +20,14 @@ class Pagination extends StatelessWidget {
     String _next() {
       int current = currentPage! + 1;
       String page = current.toString();
+      pageState.page(page);
       return '?page=' + page;
     }
 
     String _previous() {
       int current = currentPage! - 1;
       String page = current.toString();
+      pageState.page(page);
       return '?page=' + page;
     }
 

@@ -13,15 +13,11 @@ class _CountriesScreenState extends State<CountriesScreen> {
     Future.delayed(Duration.zero, () {
       context.read<API>().init();
       context.read<API>().get(Urls.setup +
-          "/countries?per-page=${context.read<PageState>().perPageValue}");
+          "/countries?page=${context.read<PageState>().currentPage}&per-page=${context.read<PageState>().perPageValue}");
     });
 
     super.didChangeDependencies();
   }
-
-  // _loadData() async {
-  //   await context.read<API>().get(Urls.setup + "/countries");
-  // }
 
   @override
   Widget build(BuildContext context) {
