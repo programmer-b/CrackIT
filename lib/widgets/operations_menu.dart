@@ -6,15 +6,18 @@ class OperationsMenu extends StatelessWidget {
       required this.code,
       required this.api,
       required this.id,
-      required this.url})
+      required this.url,
+      required this.index})
       : super(key: key);
   final int code;
   final API api;
   final String id;
   final String url;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
+    final setup = Provider.of<SetupProvider>(context);
     return PopupMenuButton<Operations>(
       padding: const EdgeInsets.all(2),
       onSelected: (value) async {
@@ -43,8 +46,25 @@ class OperationsMenu extends StatelessWidget {
             }
             break;
           case Operations.view:
+            {
+              Future.delayed(Duration.zero, () {
+                setup.viewState();
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AddSetupScreen(
+                              index: index,
+                            )));
+              });
+            }
             break;
           case Operations.edit:
+            {
+              Future.delayed(Duration.zero, () {
+                setup.editState();
+                Navigator.pushNamed(context, 'addSetup');
+              });
+            }
             break;
         }
       },

@@ -6,5 +6,6 @@ extension IsOk on http.Response {
   }
 }
 
-enum MenuItem { item1, item2, item3 }
+enum MenuItem { item1, item2, item3, item4 }
 enum Operations {activate, restore, delete, deactivate, view, edit}
+enum SetupMode {view, edit, add}

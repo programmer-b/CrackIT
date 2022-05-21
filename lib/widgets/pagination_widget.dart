@@ -37,13 +37,13 @@ class Pagination extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          PerPage(
-            url: url,
-            api: provider,
-          ),
+          // PerPage(
+          //   url: url,
+          //   api: provider,
+          // ),
           Txt(
               text:
-                  '${provider.successMap['dataPayload']['countOnPage'] ?? ''} of ${provider.successMap['dataPayload']['totalCount'] ?? ''} records'),
+                  '${provider.successMap['dataPayload']['countOnPage'] ?? ''} of ${provider.successMap['dataPayload']['totalCount'] ?? ''}'),
           Row(
             children: [
               IconButton(

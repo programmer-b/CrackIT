@@ -49,7 +49,7 @@ class MySearchDelegate extends SearchDelegate {
                 )
                     : Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: _dataTable(map(), api),
+                  child: _dataTable(map(), api, context),
                 );
               } else {
                 return const Center(
@@ -71,25 +71,11 @@ class MySearchDelegate extends SearchDelegate {
 
         return Padding(
             padding: const EdgeInsets.all(8),
-            child: _dataTable(map(), provider));
+            child: _dataTable(map(), provider, context));
       },
     );
   }
 }
 
-Widget _dataTable(List<dynamic> map, API provider) {
-  return DataTable(
-      columns: [
-        for (int i = 0; i < rowsAndColumns.countriesC.length; i++)
-          rowsAndColumns.countriesC[i]
-      ],
-      rows: List<DataRow>.generate(map.length, (index) {
-        return DataRow(cells: [
-          for (int i = 0;
-          i < rowsAndColumns.countriesR(map, index, provider).length;
-          i++)
-            rowsAndColumns.countriesR(map, index, provider)[i]
-        ]);
-      }));
-}
+
 

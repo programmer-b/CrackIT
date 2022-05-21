@@ -1,26 +1,26 @@
 part of 'package:crackit/app.dart';
 
-class CertificationScreen extends StatefulWidget {
-  const CertificationScreen({Key? key}) : super(key: key);
+class HomeSetupScreen extends StatefulWidget {
+  const HomeSetupScreen({Key? key}) : super(key: key);
 
   @override
-  State<CertificationScreen> createState() => _CertificationScreenState();
+  State<HomeSetupScreen> createState() => _HomeSetupScreenState();
 }
 
-class _CertificationScreenState extends State<CertificationScreen> {
+class _HomeSetupScreenState extends State<HomeSetupScreen> {
   @override
   void didChangeDependencies() {
     Future.delayed(Duration.zero, () {
       context.read<API>().init();
       context.read<API>().get(Urls.setup +
           "/countries?page=${context.read<PageState>().currentPage}&per-page=${context.read<PageState>().perPageValue}");
-      context.read<SetupProvider>().currentPageUp(url: '/countries', name: 'country' ,  title: 'Countries', postUrl: '/country');
     });
+
     super.didChangeDependencies();
   }
 
   @override
   Widget build(BuildContext context) {
-    return const SetupRoot();
+    return Container();
   }
 }

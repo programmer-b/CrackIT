@@ -19,6 +19,10 @@ part './UI/hrmis/setup/designation/designation_screen.dart';
 part './UI/hrmis/setup/employment/employment_screen.dart';
 part './UI/hrmis/setup/immigration/immigration_screen.dart';
 part './UI/hrmis/setup/organization/organization_screen.dart';
+part './UI/hrmis/setup/add_setup_screen.dart';
+part './UI/hrmis/setup/edit_setup_screen.dart';
+part './UI/hrmis/setup/home_setup_screen.dart';
+part './UI/errors/api_error.dart';
 part './provider/api.dart';
 part './constants/assets.dart';
 part './constants/colors.dart';
@@ -34,14 +38,16 @@ part './widgets/menu_item.dart';
 part './widgets/operations_menu.dart';
 part './widgets/app_bar_menu.dart';
 part './widgets/DataTable/data_table.dart';
+part './widgets/progress_indicator.dart';
 part './models/data_table.dart';
 part './widgets/DataTable/rows_and_columns.dart';
 part './widgets/pagination_widget.dart';
 part './widgets/per_page.dart';
+part './widgets/setup_root.dart';
 part './utils/search_delegate.dart';
 part './utils/operation.dart';
-part './UI/errors/api_error.dart';
 part './provider/page_state.dart';
+part './provider/setup_provider.dart';
 
 const FlutterSecureStorage storage = FlutterSecureStorage();
 final Dialog dialog = Dialog();
@@ -60,7 +66,9 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<API>(create: (context) => API()),
-        ChangeNotifierProvider<PageState>(create: (context) => PageState())
+        ChangeNotifierProvider<PageState>(create: (context) => PageState()),
+        ChangeNotifierProvider<SetupProvider>(
+            create: (context) => SetupProvider())
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -69,6 +77,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/login': (context) => const LoginScreen(),
+          'addSetup' : (context) => const AddSetupScreen()
         },
         home: FutureBuilder(
             future: storage.read(key: 'token'),

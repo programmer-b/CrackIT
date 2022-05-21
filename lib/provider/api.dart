@@ -12,23 +12,40 @@ class API with ChangeNotifier {
   bool _operationSuccess = false;
   bool _operationDone = false;
   bool _operationError = false;
+  bool _netError = false;
+
   String _successMessage = '';
   String _errorMessage = '';
   String _actionMessage = '';
 
   Map<String, dynamic> get successMap => _successMap;
+
   Map<String, dynamic> get errorMap => _errorMap;
+
   bool get success => _success;
+
   bool get error => _error;
+
   bool get dataError => _dataError;
+
   bool get catchError => _catchError;
+
   bool get tokenExpired => _tokenExpired;
+
   bool get isLoading => _isLoading;
+
   bool get operationError => _operationError;
+
   bool get operationSuccess => _operationSuccess;
+
   bool get operationDone => _operationDone;
+
+  bool get netError => _netError;
+
   String get successMessage => _successMessage;
+
   String get errorMessage => _errorMessage;
+
   String get actionMessage => _actionMessage;
 
   void _load() {
@@ -58,11 +75,20 @@ class API with ChangeNotifier {
     notifyListeners();
   }
 
+
+  void postInit() {
+    _successMessage = '';
+    _catchError = false;
+    _errorMessage = '';
+    _dataError = false;
+    notifyListeners();
+  }
+
   Future<void> auth(String url, Map body) async {
     _load();
     try {
       final response =
-          await http.post(Uri.parse(Urls.commonBase + url), body: body);
+      await http.post(Uri.parse(Urls.commonBase + url), body: body);
       debugPrint(response.body);
 
       if (response.ok) {
@@ -71,8 +97,70 @@ class API with ChangeNotifier {
             key: 'token',
             value: jsonDecode(response.body)['dataPayload']['data']['token']);
       } else {
+        _error = true;
         _dataError = true;
         _errorMap = jsonDecode(response.body);
+      }
+    } catch (e) {
+      _catch(e);
+    }
+    _isLoading = false;
+    notifyListeners();
+  }
+
+
+  Future<void> post(String url, var body) async {
+    String? token = await storage.read(key: 'token');
+    _load();
+    try {
+      final response = await http
+          .post(Uri.parse(Urls.commonBase + url), body: body, headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token'
+      });
+      debugPrint(response.body);
+
+      if (response.ok) {
+        _success = true;
+        _successMessage =
+        jsonDecode(response.body)['toastPayload']['toastMessage'];
+        debugPrint(jsonDecode(response.body)['toastPayload']['toastMessage']);
+      } else {
+        _dataError = true;
+        _errorMap = jsonDecode(response.body);
+        _errorMessage =
+        jsonDecode(response.body)['errorPayload']['toastMessage'];
+      }
+    } catch (e) {
+      _catch(e);
+    }
+    _isLoading = false;
+    notifyListeners();
+  }
+
+  Future<void> put(String url, var body) async {
+    String? token = await storage.read(key: 'token');
+    _load();
+    try {
+      final response = await http
+          .put(Uri.parse(Urls.commonBase + url), body: body, headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+        'Authorization': 'Bearer $token'
+      });
+      debugPrint(response.body);
+
+      if (response.ok) {
+        _success = true;
+        _successMessage =
+        jsonDecode(response.body)['toastPayload']['toastMessage'];
+        debugPrint(jsonDecode(response.body)['toastPayload']['toastMessage']);
+      } else {
+        _dataError = true;
+        _errorMap = jsonDecode(response.body);
+        _errorMessage =
+        jsonDecode(response.body)['errorPayload']['toastMessage'];
       }
     } catch (e) {
       _catch(e);
@@ -87,7 +175,7 @@ class API with ChangeNotifier {
     _load();
     try {
       final response =
-          await http.get(Uri.parse(Urls.commonBase + url!), headers: {
+      await http.get(Uri.parse(Urls.commonBase + url!), headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Authorization': 'Bearer $token'
@@ -126,12 +214,13 @@ class API with ChangeNotifier {
     _catchError = true;
     debugPrint(e.toString());
     if (e is SocketException || e is FormatException) {
-
+      _netError = true;
       _errorMessage = 'Oops! Looks like there is a connection error.';
     } else if (e is TimeoutException) {
       _errorMessage = 'Oops! Timeout was reached.';
     } else {
-      _errorMessage = e.toString();//'Oops! Something went wrong, try again later.';
+      _errorMessage =
+          e.toString(); //'Oops! Something went wrong, try again later.';
     }
     _actionMessage = 'Retry';
   }
@@ -142,7 +231,9 @@ class API with ChangeNotifier {
       _errorMessage = 'Oops! Connection error';
     } else {
       _errorMessage = 'Oops! Something went wrong';
+      _errorMessage = 'Oops... Connection error';
     }
+
   }
 
   void _operationDataError(http.Response response) {
@@ -160,7 +251,7 @@ class API with ChangeNotifier {
     String? token = await storage.read(key: 'token');
     try {
       final response =
-          await http.delete(Uri.parse(Urls.commonBase + url), headers: {
+      await http.delete(Uri.parse(Urls.commonBase + url), headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Authorization': 'Bearer $token'
@@ -211,7 +302,7 @@ class API with ChangeNotifier {
     String? token = await storage.read(key: 'token');
     try {
       final response =
-          await http.patch(Uri.parse(Urls.commonBase + url), headers: {
+      await http.patch(Uri.parse(Urls.commonBase + url), headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
         'Authorization': 'Bearer $token'
@@ -230,14 +321,4 @@ class API with ChangeNotifier {
     notifyListeners();
   }
 
-Future<dynamic> search(String url) async {
-    String? token = await storage.read(key: 'token');
-    try{
-      return await http.get(Uri.parse(Urls.commonBase + url),headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': 'Bearer $token'
-      });
-    }catch(e){}
-}
 }

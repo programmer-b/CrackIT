@@ -9,19 +9,22 @@ class DesignationScreen extends StatefulWidget {
 
 class _DesignationScreenState extends State<DesignationScreen> {
   @override
+  void didChangeDependencies() {
+    Future.delayed(Duration.zero, () {
+      context.read<API>().init();
+      context.read<API>().get(Urls.setup +
+          "/designation?page=${context.read<PageState>().currentPage}&per-page=${context.read<PageState>().perPageValue}");
+      context.read<SetupProvider>().currentPageUp(
+          url: '/designation',
+          name: 'designation',
+          title: 'Designation',
+          postUrl: '/designation');
+    });
+    super.didChangeDependencies();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return Consumer<API>(
-      builder: (context, provider, child) {
-        return Scaffold(
-          appBar: AppBar(
-            title: const Txt(
-              text: 'Designation',
-              color: Colors.white,
-            ),
-          ),
-          drawer: const ComplexDrawer(),
-        );
-      },
-    );
+    return const SetupRoot();
   }
 }
