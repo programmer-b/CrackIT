@@ -20,9 +20,8 @@ class SetupRoot extends StatelessWidget {
                   iconTheme: const IconThemeData(color: Colors.white),
                   actions: [
                     Visibility(
-                      visible: provider.isLoading,
-                      child: const ProgressIndicator()
-                    ),
+                        visible: provider.isLoading,
+                        child: const ProgressIndicator()),
                     if (provider.success)
                       IconButton(
                           onPressed: () {
@@ -34,7 +33,6 @@ class SetupRoot extends StatelessWidget {
                     if (provider.success)
                       AppBarMenu(
                         url: Urls.setup + setup.url,
-                        name: setup.name,
                       ),
                   ],
                   title: Txt(

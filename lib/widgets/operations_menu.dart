@@ -62,7 +62,12 @@ class OperationsMenu extends StatelessWidget {
             {
               Future.delayed(Duration.zero, () {
                 setup.editState();
-                Navigator.pushNamed(context, 'addSetup');
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => AddSetupScreen(
+                              index: index,
+                            )));
               });
             }
             break;
