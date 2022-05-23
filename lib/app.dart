@@ -19,9 +19,7 @@ part './UI/hrmis/setup/designation/designation_screen.dart';
 part './UI/hrmis/setup/employment/employment_screen.dart';
 part './UI/hrmis/setup/immigration/immigration_screen.dart';
 part './UI/hrmis/setup/organization/organization_screen.dart';
-part './UI/hrmis/setup/add_setup_screen.dart';
-part './UI/hrmis/setup/edit_setup_screen.dart';
-part './UI/hrmis/setup/home_setup_screen.dart';
+part './UI/hrmis/setup/setup_operation_screen.dart';
 part './UI/errors/api_error.dart';
 part './provider/api.dart';
 part './constants/assets.dart';
@@ -77,7 +75,7 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/login': (context) => const LoginScreen(),
-          'addSetup' : (context) => const AddSetupScreen()
+          'addSetup': (context) => const AddSetupScreen()
         },
         home: FutureBuilder(
             future: storage.read(key: 'token'),

@@ -1,7 +1,7 @@
 part of 'package:crackit/app.dart';
 
 class AppBarMenu extends StatelessWidget {
-  const AppBarMenu({Key? key, required this.url}) : super(key: key);
+  const AppBarMenu({Key? key, required this.url,}) : super(key: key);
   final String url;
 
   @override

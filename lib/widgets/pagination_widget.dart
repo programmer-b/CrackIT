@@ -1,13 +1,14 @@
 part of 'package:crackit/app.dart';
 
 class Pagination extends StatelessWidget {
-  const Pagination({Key? key, required this.provider, required this.url})
+  const Pagination({Key? key, required this.url})
       : super(key: key);
-  final API provider;
+
   final String url;
   @override
   Widget build(BuildContext context) {
     final pageState = context.read<PageState>();
+    final provider = context.read<API>();
     int? currentPage = provider.successMap['dataPayload']['currentPage'] ?? '';
     bool _hasPrevious() {
       return currentPage == 1;

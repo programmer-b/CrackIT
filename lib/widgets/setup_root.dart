@@ -59,7 +59,6 @@ class SetupRoot extends StatelessWidget {
                           ),
                 bottomNavigationBar: provider.success
                     ? Pagination(
-                        provider: provider,
                         url: Urls.setup + setup.url,
                       )
                     : null);
