@@ -19,7 +19,7 @@ class _OrganizationScreenState extends State<OrganizationScreen> {
               color: Colors.white,
             ),
           ),
-          drawer: const ComplexDrawer(),
+          drawer: const Drawer(),
         );
       },
     );

@@ -4,7 +4,8 @@ class CDM {
   //complex drawer menu
   final IconData icon;
   final String title;
+  final List<String> menus;
   final List<String> submenus;
 
-  CDM(this.icon, this.title, this.submenus);
+  CDM(this.icon, this.title, this.submenus, this.menus);
 }
