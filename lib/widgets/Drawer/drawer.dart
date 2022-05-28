@@ -283,14 +283,14 @@ part of 'package:crackit/app.dart';
 //   }
 // }
 
-class Drawer extends StatefulWidget {
-  const Drawer({Key? key}) : super(key: key);
+class ComplexDrawer extends StatefulWidget {
+  const ComplexDrawer({Key? key}) : super(key: key);
 
   @override
-  State<Drawer> createState() => _DrawerState();
+  State<ComplexDrawer> createState() => _ComplexDrawerState();
 }
 
-class _DrawerState extends State<Drawer> {
+class _ComplexDrawerState extends State<ComplexDrawer> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(

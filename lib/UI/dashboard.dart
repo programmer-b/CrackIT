@@ -19,7 +19,7 @@ class _DashBoardState extends State<DashBoard> {
               color: Colors.white,
             ),
           ),
-          drawer: const Drawer(),
+          drawer: const ComplexDrawer(),
         );
       },
     );

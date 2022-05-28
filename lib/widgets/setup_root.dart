@@ -41,7 +41,7 @@ class SetupRoot extends StatelessWidget {
                   ),
                   // bottom: tableHead(),
                 ),
-                drawer: const Drawer(),
+                drawer: const ComplexDrawer(),
                 body: provider.error
                     ? APIError(
                         api: provider,

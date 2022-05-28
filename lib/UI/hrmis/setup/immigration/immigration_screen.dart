@@ -19,7 +19,7 @@ class _ImmigrationScreenState extends State<ImmigrationScreen> {
               color: Colors.white,
             ),
           ),
-          drawer: const Drawer(),
+          drawer: const ComplexDrawer(),
         );
       },
     );
