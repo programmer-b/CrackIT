@@ -28,6 +28,7 @@ part './constants/enums.dart';
 part './constants/pages.dart';
 part './constants/urls.dart';
 part './constants/dimens.dart';
+part './constants/strings.dart';
 part './models/cdm.dart';
 part './utils/dialogs.dart';
 part './widgets/appbar.dart';
