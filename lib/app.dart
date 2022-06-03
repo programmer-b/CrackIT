@@ -46,6 +46,7 @@ part './widgets/pagination_widget.dart';
 part './widgets/Buttons/account_button.dart';
 part './widgets/per_page.dart';
 part './widgets/setup_root.dart';
+part './widgets/icons/notification_icon.dart';
 part './utils/search_delegate.dart';
 part './utils/operation.dart';
 part './provider/page_state.dart';
