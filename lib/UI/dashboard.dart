@@ -27,9 +27,10 @@ class _DashBoardState extends State<DashBoard> {
                 },
               ),
               actions: <Widget>[
-                
                 IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
-                NotificationIcon(onPressed: (){}, ),
+                NotificationIcon(
+                  onPressed: () {},
+                ),
                 IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
               ]),
           drawer: const ComplexDrawer(),
