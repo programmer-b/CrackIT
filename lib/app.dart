@@ -5,13 +5,14 @@ import 'dart:io';
 import 'package:art_sweetalert/art_sweetalert.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 
 part './UI/auth/login_screen.dart';
-part './UI/dashboard.dart';
+part 'UI/home/dashboard.dart';
 part './widgets/Drawer/drawer.dart';
 part './UI/hrmis/setup/certification/certification_screen.dart';
 part './UI/hrmis/setup/countries/countries_screen.dart';
@@ -76,7 +77,15 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          colorSchemeSeed: Colors.grey[50],
+          scaffoldBackgroundColor: Colors.grey[100],
+          appBarTheme: const AppBarTheme(
+            titleTextStyle: TextStyle(color: Colors.black, fontSize: 17),
+            systemOverlayStyle: SystemUiOverlayStyle.dark,
+            color: Colors.white,
+            elevation: 0,
+            iconTheme: IconThemeData(color: Colors.black),
+          ),
+          //colorSchemeSeed: Colors.grey[50],
         ),
         routes: {
           '/login': (context) => const LoginScreen(),
