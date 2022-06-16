@@ -24,7 +24,7 @@ class SearchBarButton extends StatelessWidget {
                     width: 15,
                   ),
                   Txt(
-                    text: 'Search applications',
+                    text: 'Search applications', color: Colors.black54
                   )
                 ],
               )),

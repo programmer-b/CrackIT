@@ -6,23 +6,42 @@ class ApplicationIconButton extends StatelessWidget {
       this.backgroundColor = Colors.white,
       this.onTap,
       this.icon,
-      this.iconColor = Colors.green})
+      this.iconColor = Colors.green,
+      this.name,
+      this.iconSize = 35, this.width = 90})
       : super(key: key);
   final Color backgroundColor;
   final void Function()? onTap;
   final IconData? icon;
   final Color iconColor;
+  final String? name;
+  final double iconSize;
+  final double width;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-        child: Container(
-            decoration:
-                BoxDecoration(shape: BoxShape.circle, color: backgroundColor),
-            padding: const EdgeInsets.all(6),
-            child: Icon(
-              icon,
-              color: iconColor,
-            )));
+        child: Column(
+      children: [
+        Container(
+          width: width,
+          decoration:
+              BoxDecoration(shape: BoxShape.circle, color: backgroundColor),
+          padding: const EdgeInsets.all(6),
+          child: Icon(
+            icon,
+            color: iconColor,
+            size: iconSize
+          ),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Txt(
+          text: name,
+          color: Colors.black54,
+        )
+      ],
+    ));
   }
 }

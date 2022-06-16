@@ -1,6 +1,6 @@
 part of 'package:crackit/app.dart';
 
-class HomeRouteAppBar {
+class DashboardAppBar {
   static PreferredSizeWidget homeRouteAppBar() {
     return AppBar(
         title:
@@ -16,5 +16,13 @@ class HomeRouteAppBar {
           ),
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
         ]);
+  }
+
+  static PreferredSizeWidget applicationsRouteAppBar() {
+    return AppBar(
+      leading: IconButton(icon: const Icon(Icons.search), onPressed: () {}),
+      title: const Txt(
+          text: 'Applications', fontWeight: FontWeight.w500, fontSize: 20),
+    );
   }
 }
