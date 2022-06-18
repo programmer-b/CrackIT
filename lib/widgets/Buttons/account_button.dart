@@ -22,7 +22,7 @@ class AccountButton extends StatelessWidget {
                 BoxDecoration(color: backgroundColor, shape: BoxShape.circle),
             child: const Center(
               child: Icon(
-                FontAwesomeIcons.userLarge,
+                FontAwesomeIcons.user,
                 size: 15,
               ),
             ),

@@ -10,11 +10,12 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
+import './UI/Home/Apps/apps.dart';
 
 part './UI/auth/login_screen.dart';
-part 'UI/home/dashboard.dart';
-part './UI/home/applications_route.dart';
-part './UI/home/home_route.dart';
+part './UI/Home/dashboard.dart';
+part './UI/Home/applications_route.dart';
+part './UI/Home/home_route.dart';
 part './widgets/Drawer/drawer.dart';
 part './UI/hrmis/setup/certification/certification_screen.dart';
 part './UI/hrmis/setup/countries/countries_screen.dart';
@@ -33,8 +34,9 @@ part './constants/urls.dart';
 part './constants/dimens.dart';
 part './constants/strings.dart';
 part './models/cdm.dart';
+part './models/applications.dart';
 part './utils/dialogs.dart';
-part 'widgets/Appbars/dashboard_appbars.dart';
+part './widgets/Appbars/dashboard_appbars.dart';
 part './widgets/Buttons/my_button.dart';
 part './widgets/Appbars/appbar.dart';
 part './widgets/txt.dart';
@@ -56,6 +58,7 @@ part './widgets/Icons/my_icon.dart';
 part './widgets/Buttons/application_icon_button.dart';
 part './utils/search_delegate.dart';
 part './utils/operation.dart';
+part './utils/icons_helper.dart';
 part './provider/page_state.dart';
 part './provider/setup_provider.dart';
 part './widgets/Buttons/search_bar_button.dart';
@@ -96,7 +99,17 @@ class MyApp extends StatelessWidget {
         ),
         routes: {
           '/login': (context) => const LoginScreen(),
-          'addSetup': (context) => const AddSetupScreen()
+          'addSetup': (context) => const AddSetupScreen(),
+          '/iam': (_) => const IAM(),
+          '/profile': (_) => const Profile(),
+          '/auth': (_) => const Auth(),
+          '/employment': (_) => const Employment(),
+          '/jobs': (_) => const Jobs(),
+          '/hrms': (_) => const HRMS(),
+          '/training': (_) => const Training(),
+          '/setup': (context) => const Setup(),
+          '/leave': (_) => const Leave(),
+          '/apps' :(_) => const ApplicationsRoute(),
         },
         home: FutureBuilder(
             future: storage.read(key: 'token'),

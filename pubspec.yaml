@@ -36,11 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   flutter_secure_storage: ^5.0.2
   provider: ^6.0.2
-  font_awesome_flutter: ^10.1.0
   http: ^0.13.4
   data_table_2: ^2.2.1
   art_sweetalert: ^0.0.5
   anim_search_bar: ^2.0.2
+  font_awesome_flutter: ^10.1.0
 
 dev_dependencies:
   flutter_test:

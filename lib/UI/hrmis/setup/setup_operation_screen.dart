@@ -48,7 +48,7 @@ class _AddSetupScreenState extends State<AddSetupScreen> {
                       Navigator.pop(context);
                     },
                     icon: const Icon(
-                      FontAwesomeIcons.trashCan,
+                      FontAwesomeIcons.trash,
                       color: Colors.white,
                       size: 17,
                     ),
