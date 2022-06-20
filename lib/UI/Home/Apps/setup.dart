@@ -13,7 +13,10 @@ class _SetupState extends State<Setup> {
     return Scaffold(
       appBar: _appbar(
         context,
-        title: Text('Setup'),
+        title: const Text('Setup'),
+      ),
+      drawer: ComplexDrawer(
+        menu: map[currentApp],
       ),
       body: const Center(
         child: Text('Setup'),

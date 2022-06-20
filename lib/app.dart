@@ -72,6 +72,8 @@ final Operation operation = Operation();
 String currentUrl = '';
 int? perPage = 25;
 
+int currentApp = 0;
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 

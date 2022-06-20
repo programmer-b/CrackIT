@@ -13,9 +13,12 @@ class _IAMState extends State<IAM> {
     return Scaffold(
       appBar: _appbar(
         context,
-        title: Text('IAM'),
+        title: const Text('IAM'),
       ),
-      body: Center(
+      drawer: ComplexDrawer(
+        menu: map[currentApp],
+      ),
+      body: const Center(
         child: Text('IAM'),
       ),
     );

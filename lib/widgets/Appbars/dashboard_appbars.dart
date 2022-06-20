@@ -1,12 +1,12 @@
 part of 'package:crackit/app.dart';
 
 class DashboardAppBar {
-  static PreferredSizeWidget homeRouteAppBar() {
+  static PreferredSizeWidget defaultAppBar({required String title}) {
     return AppBar(
-        title:
-            const Txt(text: 'Home', fontWeight: FontWeight.w500, fontSize: 20),
-        actions: <Widget>[
-          //IconButton(onPressed: () {}, icon: const Icon(Icons.search)),
+        centerTitle: false,
+        title: Txt(text: title, fontWeight: FontWeight.w500, fontSize: 20),
+        actions: [
+          IconButton(icon: const Icon(Icons.search), onPressed: () {}),
           Container(
             margin: const EdgeInsets.only(top: 3),
             child: NotificationIcon(
@@ -16,13 +16,5 @@ class DashboardAppBar {
           ),
           IconButton(onPressed: () {}, icon: const Icon(Icons.more_vert)),
         ]);
-  }
-
-  static PreferredSizeWidget applicationsRouteAppBar() {
-    return AppBar(
-      leading: IconButton(icon: const Icon(Icons.search), onPressed: () {}),
-      title: const Txt(
-          text: 'Applications', fontWeight: FontWeight.w500, fontSize: 20),
-    );
   }
 }

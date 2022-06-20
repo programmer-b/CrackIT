@@ -9,8 +9,8 @@ class DashBoard extends StatefulWidget {
 
 List dashboardScreens = [const HomeRoute(), const ApplicationsRoute()];
 List dashboardAppbars = [
-  DashboardAppBar.homeRouteAppBar(),
-  DashboardAppBar.applicationsRouteAppBar()
+  DashboardAppBar.defaultAppBar(title: 'Home'),
+  DashboardAppBar.defaultAppBar(title: 'Applications'),
 ];
 
 int index = 0;

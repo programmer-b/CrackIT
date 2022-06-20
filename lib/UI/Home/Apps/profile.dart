@@ -13,7 +13,10 @@ class _ProfileState extends State<Profile> {
     return Scaffold(
       appBar: _appbar(
         context,
-        title: Text('Profile'),
+        title: const Text('Profile'),
+      ),
+      drawer: ComplexDrawer(
+        menu: map[currentApp],
       ),
       body: const Center(
         child: Text('Profile'),

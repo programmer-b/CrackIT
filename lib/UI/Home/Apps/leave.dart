@@ -13,7 +13,10 @@ class _LeaveState extends State<Leave> {
     return Scaffold(
       appBar: _appbar(
         context,
-        title: Text('Leave'),
+        title: const Text('Leave'),
+      ),
+      drawer: ComplexDrawer(
+        menu: map[currentApp],
       ),
       body: const Center(
         child: Text('Leave'),

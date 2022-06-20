@@ -13,7 +13,10 @@ class _EmploymentState extends State<Employment> {
     return Scaffold(
       appBar: _appbar(
         context,
-        title: Text('Employment'),
+        title: const Text('Employment'),
+      ),
+      drawer: ComplexDrawer(
+        menu: map[currentApp],
       ),
       body: const Center(
         child: Text('Employment'),

@@ -14,8 +14,11 @@ class _HRMSState extends State<HRMS> {
       child: Scaffold(
         appBar: _appbar(
           context,
-          title: Text('HRMS'),
+          title: const Text('HRMS'),
         ),
+        drawer: ComplexDrawer(
+        menu: map[currentApp],
+      ),
         body: const Center(
           child: Text('HRMS'),
         ),

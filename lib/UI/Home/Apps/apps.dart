@@ -47,25 +47,15 @@ PreferredSizeWidget _appbar(
 }) {
   return AppBar(
     title: title,
-    
     actions: [
-      TextButton(
-        child: const Txt(
-          text: 'X',
-          fontSize: 25,
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
+      IconButton(
+        icon: const Icon(Icons.cancel),
+        onPressed: () => Navigator.pop(context),
+      )
     ],
-    
     centerTitle: true,
     backgroundColor: backgroundColor,
     elevation: 0,
-    leading: IconButton(
-      icon: const Icon(Icons.menu),
-      onPressed: () {},
-    ),
+    
   );
 }

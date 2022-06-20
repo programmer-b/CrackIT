@@ -13,7 +13,10 @@ class _TrainingState extends State<Training> {
     return Scaffold(
       appBar: _appbar(
         context,
-        title: Text('Training'),
+        title: const Text('Training'),
+      ),
+      drawer: ComplexDrawer(
+        menu: map[currentApp],
       ),
       body: const Center(
         child: Text('Training'),

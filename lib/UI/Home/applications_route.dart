@@ -8,25 +8,8 @@ class ApplicationsRoute extends StatefulWidget {
 }
 
 class _ApplicationsRouteState extends State<ApplicationsRoute> {
-  List<Map<String, String>> apps = [
-    {"icon": "admin_panel_settings", "name": "IAM & ADMIN", "url": "/iam"},
-    {"icon": "hd_rounded", "name": "HRMS", "url": "/hrms"},
-    {"icon": "password", "name": "AUTH", "url": "/auth"},
-    {"icon": "account_circle", "name": "PROFILE", "url": "/profile"},
-    {"icon": "leave_bags_at_home", "name": "LEAVE MANAGEMENT", "url": "/leave"},
-    {
-      "icon": "event_available",
-      "name": "EMPLOYMENT STATUS",
-      "url": "/employment"
-    },
-    {
-      "icon": "settings_accessibility_outlined",
-      "name": "SETUP",
-      "url": "/setup"
-    },
-    {"icon": "join_full", "name": "JOBS", "url": "/jobs"},
-    {"icon": "train", "name": "TRAINING", "url": "/training"},
-  ];
+  var apps = map;
+
   @override
   Widget build(BuildContext context) {
     final double appWidth = MediaQuery.of(context).size.width / 3;
@@ -51,6 +34,9 @@ class _ApplicationsRouteState extends State<ApplicationsRoute> {
                             i++)
                           ApplicationIconButton(
                             onTap: () {
+                              setState(() => currentApp = index * 3 + i!);
+                              debugPrint(
+                                  'currentApp: $currentApp index: $index');
                               Navigator.pushNamed(
                                   context,
                                   Applications.fromJson(apps[index * 3 + i!])
