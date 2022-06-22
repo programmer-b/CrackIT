@@ -10,27 +10,37 @@ class HomeRoute extends StatefulWidget {
 class _HomeRouteState extends State<HomeRoute> {
   @override
   Widget build(BuildContext context) {
+    final double? width = MediaQuery.of(context).size.width / 2 - 30;
     return Container(
-        padding: const EdgeInsets.all(8),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: const <Widget>[
-              MyIcon(
-                icon: Icons.home_max_outlined,
-                iconColor: Colors.green,
-                iconSize: 30,
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Txt(
-                text: 'Home',
-              )
-            ],
-          ),
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+        child: Column(
+          children: <Widget>[
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                ApplicationButton(
+                    text: 'Dynamic Form1',
+                    width: width,
+                    onTap: () => Navigator.pushNamed(context, '/sample_form_1')),
+                ApplicationButton(
+                    text: 'Dynamic Form2',
+                    width: width,
+                    onTap: () => Navigator.pushNamed(context, '/sample_form_2')),
+              ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                ApplicationButton(
+                    text: 'Sample table1', width: width, onTap: () {}),
+                ApplicationButton(
+                    text: 'Sample table2', width: width, onTap: () {}),
+              ],
+            ),
+          ],
         ));
   }
-
-  
 }

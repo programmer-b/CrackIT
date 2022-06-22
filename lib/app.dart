@@ -62,6 +62,9 @@ part './utils/icons_helper.dart';
 part './provider/page_state.dart';
 part './provider/setup_provider.dart';
 part './widgets/Buttons/search_bar_button.dart';
+part './widgets/Buttons/application_button.dart';
+part './UI/Home/Forms/sample_form_1.dart';
+part './UI/Home/Forms/sample_form_2.dart';
 
 const FlutterSecureStorage storage = FlutterSecureStorage();
 final Dialog dialog = Dialog();
@@ -111,7 +114,9 @@ class MyApp extends StatelessWidget {
           '/training': (_) => const Training(),
           '/setup': (context) => const Setup(),
           '/leave': (_) => const Leave(),
-          '/apps' :(_) => const ApplicationsRoute(),
+          '/apps': (_) => const ApplicationsRoute(),
+          '/sample_form_2': (_) => const SampleForm2(),
+          '/sample_form_1': (_) => const SampleForm1(),
         },
         home: FutureBuilder(
             future: storage.read(key: 'token'),
