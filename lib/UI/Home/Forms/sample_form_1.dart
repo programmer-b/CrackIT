@@ -1,4 +1,6 @@
-part of 'package:crackit/app.dart';
+import 'dart:developer';
+
+import 'package:flutter/material.dart';
 
 class SampleForm1 extends StatefulWidget {
   const SampleForm1({Key? key}) : super(key: key);
@@ -8,117 +10,156 @@ class SampleForm1 extends StatefulWidget {
 }
 
 class _SampleForm1State extends State<SampleForm1> {
-  List list = [];
-  int count = 0;
+  @override
+  Widget build(BuildContext context) {
+    return const Test();
+  }
+}
+
+class Test extends StatefulWidget {
+  const Test({Key? key}) : super(key: key);
+
+  @override
+  _TestState createState() => _TestState();
+}
+
+class _TestState extends State<Test> {
+  var nameTECs = <int, TextEditingController>{};
+  var mailTECs = <int, TextEditingController>{};
+  List<Entry> entries = [];
+
+  var item = <int, Widget>{};
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    item.addAll({0: newMethod(context, 0)});
+  }
+
+  ondDone() {
+    entries.clear();
+    for (int i = 0; i <= nameTECs.keys.last; i++) {
+      var name = nameTECs[i]?.value.text;
+      var mail = mailTECs[i]?.value.text;
+
+      // log(mailTECs[i]?.value.text);
+      if (name != null && mail != null) {
+        entries.add(Entry(name, mail));
+      }
+    }
+    log(entries.toString());
+    for (int a = 0; a < entries.length; a++) {
+      log(entries[a].name!);
+      log(entries[a].email!);
+    }
+  }
+
+  newMethod(
+    BuildContext context,
+    int index,
+  ) {
+    var nameController = TextEditingController();
+    var mailController = TextEditingController();
+    nameTECs.addAll({index: nameController});
+    mailTECs.addAll({index: mailController});
+    return Column(
+      children: [
+        Text(index.toString()),
+        TextFormField(
+          controller: nameController,
+          validator: (value) {
+            return value!.isEmpty ? 'Enter some text' : null;
+          },
+          decoration: const InputDecoration(hintText: "Name"),
+        ),
+        TextFormField(
+          controller: mailController,
+          validator: (value) {
+            return value!.isEmpty ? 'Enter email' : null;
+          },
+          decoration: const InputDecoration(hintText: "Email"),
+
+          // controller: nameCount,
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            TextButton(
+              onPressed: () {
+                item.addAll({
+                  item.keys.last + 1: newMethod(context, item.keys.last + 1)
+                });
+                setState(() {});
+
+                // }
+              },
+              child: const Text('Add'),
+            ),
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  item.removeWhere((key, value) => key == index);
+                  nameTECs.removeWhere((key, value) => key == index);
+                  mailTECs.removeWhere((key, value) => key == index);
+                });
+              },
+              child: const Text('Remove'),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Txt(text: 'Dynamic form', fullUpperCase: true),
-        centerTitle: true,
-        actions: [
-          TextButton(
-              onPressed: () {
-              },
-              child: const Txt(text: 'save', fullUpperCase: true)),
-        ],
-        backgroundColor: Colors.white,
+        title: const Text('Test'),
       ),
       body: Padding(
-          padding: const EdgeInsets.all(8),
-          child: ListView(
-            children: [
-              for (int i = 0; i < count; i++) _form(i),
-            ],
-          )),
-      floatingActionButton: FloatingActionButton.extended(
-          onPressed: () => setState(() => count++),
-          label: const Txt(
-            text: 'Add form',
-          ),
-          icon: const Icon(Icons.add)),
-    );
-  }
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                ListView.builder(
+                    shrinkWrap: true,
+                    physics: const ScrollPhysics(),
+                    itemCount: item.length,
+                    itemBuilder: (context, index) {
+                      return item.values.elementAt(index);
+                    }),
 
-  Widget _form(int index) {
-    return Column(
-      children: [
-        Card(
-            elevation: 2,
-            child: Container(
-              width: double.infinity,
-              height: 180 + 26,
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  border: Border.all(color: Colors.grey[200]!)),
-              child: Column(children: <Widget>[
-                Container(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 3, horizontal: 6),
-                    decoration: BoxDecoration(
-                        border: Border(
-                            bottom: BorderSide(color: Colors.grey[400]!))),
-                    height: 45,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Txt(
-                          text: "Form ${index + 1}",
-                          fullUpperCase: true,
-                        ),
-                        TextButton(
-                          onPressed: () => setState(() => count --),
-                          child: const Txt(text: 'Remove', fullUpperCase: true),
-                        )
-                      ],
-                    )),
-                Container(
-                    height: 133 + 26,
-                    color: Colors.grey[300]!,
-                    padding: const EdgeInsets.all(4),
-                    child: Column(children: [
-                      TextFormField(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Field cannot be empty';
-                          }
-                          return null;
-                        },
-                        onChanged: (value) {
-                          list.insert(index, {"firstName": value});
-                        },
-                        decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            filled: true,
-                            fillColor: Colors.white,
-                            hintText: 'First name'),
-                      ),
-                      const SizedBox(
-                        height: 10,
-                      ),
-                      TextFormField(
-                        validator: (value) {
-                          if (value!.isEmpty) {
-                            return 'Field cannot be empty';
-                          }
-                          return null;
-                        },
-                        onChanged: (value) {
-                          list.insert(index, {"lastName": value});
-                        },
-                        decoration: const InputDecoration(
-                            border: InputBorder.none,
-                            filled: true,
-                            fillColor: Colors.white,
-                            hintText: 'Last name'),
-                      )
-                    ]))
-              ]),
-            )),
-        const SizedBox(
-          height: 15,
-        )
-      ],
+                // for (int i = 0; i < widgeta.length; i++) widgeta[i],
+                ElevatedButton(
+                  onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      ondDone();
+                      // _formKey.currentState!.save();
+                      setState(() {});
+                    }
+                  },
+                  child: const Text('save'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
+}
+
+class Entry {
+  final String? name;
+  final String? email;
+
+  Entry(
+    this.name,
+    this.email,
+  );
 }

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:art_sweetalert/art_sweetalert.dart';
+import 'package:crackit/UI/Home/Forms/sample_form_1.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -63,7 +64,6 @@ part './provider/page_state.dart';
 part './provider/setup_provider.dart';
 part './widgets/Buttons/search_bar_button.dart';
 part './widgets/Buttons/application_button.dart';
-part './UI/Home/Forms/sample_form_1.dart';
 part './UI/Home/Forms/sample_form_2.dart';
 
 const FlutterSecureStorage storage = FlutterSecureStorage();
