@@ -84,19 +84,8 @@ class _TestState extends State<Test> {
           // controller: nameCount,
         ),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            TextButton(
-              onPressed: () {
-                item.addAll({
-                  item.keys.last + 1: newMethod(context, item.keys.last + 1)
-                });
-                setState(() {});
-
-                // }
-              },
-              child: const Text('Add'),
-            ),
             TextButton(
               onPressed: () {
                 setState(() {
@@ -118,6 +107,18 @@ class _TestState extends State<Test> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Test'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              item.addAll(
+                  {item.keys.last + 1: newMethod(context, item.keys.last + 1)});
+              setState(() {});
+
+              // }
+            },
+            child: const Text('ADD'),
+          ),
+        ],
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),

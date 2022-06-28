@@ -18,4 +18,17 @@ class PageState extends ChangeNotifier {
     currentPage = page;
     notifyListeners();
   }
+
+  SampleTable sampleTable = SampleTable();
+
+  Future<void> getTableData(context) async {
+    try {
+      final response = await DefaultAssetBundle.of(context)
+          .loadString('assets/raw/datatable.json');
+      var mJson = json.decode(response);
+
+      sampleTable = SampleTable.fromJson(mJson);
+      notifyListeners();
+    } catch (_) {}
+  }
 }

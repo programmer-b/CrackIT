@@ -16,6 +16,7 @@ List dashboardAppbars = [
 int index = 0;
 
 class _DashBoardState extends State<DashBoard> {
+  var icon = 'home';
   @override
   Widget build(BuildContext context) {
     return Scaffold(

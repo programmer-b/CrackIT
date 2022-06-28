@@ -1,0 +1,174 @@
+{
+    "next": "some Url for next page",
+    "previous": "some Url for previous page",
+    "results": [
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": true
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        },
+        {
+            "first_name": "Ananda",
+            "last_name": "Douglas",
+            "email": "douglas@gmail.com",
+            "phone": "+254123456789",
+            "verified": false
+        }
+    ]
+}

@@ -21,11 +21,13 @@ class _HomeRouteState extends State<HomeRoute> {
                 ApplicationButton(
                     text: 'Dynamic Form1',
                     width: width,
-                    onTap: () => Navigator.pushNamed(context, '/sample_form_1')),
+                    onTap: () =>
+                        Navigator.pushNamed(context, '/sample_form_1')),
                 ApplicationButton(
                     text: 'Dynamic Form2',
                     width: width,
-                    onTap: () => Navigator.pushNamed(context, '/sample_form_2')),
+                    onTap: () =>
+                        Navigator.pushNamed(context, '/sample_form_2')),
               ],
             ),
             const SizedBox(
@@ -35,9 +37,14 @@ class _HomeRouteState extends State<HomeRoute> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 ApplicationButton(
-                    text: 'Sample table1', width: width, onTap: () {}),
+                    text: 'Sample table1',
+                    width: width,
+                    onTap: () =>
+                        Navigator.pushNamed(context, '/sample_table_1')),
                 ApplicationButton(
-                    text: 'Sample table2', width: width, onTap: () {}),
+                    text: 'Sample table2',
+                    width: width,
+                    onTap: () => Navigator.pushNamed(context, '/sample_table_2')),
               ],
             ),
           ],

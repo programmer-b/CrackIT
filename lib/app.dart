@@ -4,6 +4,8 @@ import 'dart:io';
 
 import 'package:art_sweetalert/art_sweetalert.dart';
 import 'package:crackit/UI/Home/Forms/sample_form_1.dart';
+import 'package:crackit/UI/Home/Tables/sample_table_1.dart';
+import 'package:crackit/UI/Home/Tables/sample_table_2.dart';
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -12,6 +14,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:http/http.dart' as http;
 import 'package:provider/provider.dart';
 import './UI/Home/Apps/apps.dart';
+import 'models/user.dart';
 
 part './UI/auth/login_screen.dart';
 part './UI/Home/dashboard.dart';
@@ -65,6 +68,9 @@ part './provider/setup_provider.dart';
 part './widgets/Buttons/search_bar_button.dart';
 part './widgets/Buttons/application_button.dart';
 part './UI/Home/Forms/sample_form_2.dart';
+part './models/table_data.dart';
+part './models/data/users.dart';
+part './utils/utils.dart';
 
 const FlutterSecureStorage storage = FlutterSecureStorage();
 final Dialog dialog = Dialog();
@@ -117,6 +123,8 @@ class MyApp extends StatelessWidget {
           '/apps': (_) => const ApplicationsRoute(),
           '/sample_form_2': (_) => const SampleForm2(),
           '/sample_form_1': (_) => const SampleForm1(),
+          '/sample_table_1': (_) => const SampleTable1(),
+          '/sample_table_2': (_) => const SampleTable2(),
         },
         home: FutureBuilder(
             future: storage.read(key: 'token'),

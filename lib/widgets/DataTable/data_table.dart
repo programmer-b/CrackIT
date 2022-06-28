@@ -1,7 +1,7 @@
 part of 'package:crackit/app.dart';
 
-class DataTable extends StatelessWidget {
-  const DataTable({
+class MyDataTable extends StatelessWidget {
+  const MyDataTable({
     Key? key,
     required this.columns,
     required this.rows,

@@ -10,13 +10,13 @@ class SampleForm2 extends StatefulWidget {
 class _SampleForm2State extends State<SampleForm2> {
   late int _count;
   late List<Map<String, dynamic>> _values;
-  late String _result;
+  // late String _result;
   @override
   void initState() {
     super.initState();
     _count = 0;
     _values = [];
-    _result = '';
+    // _result = '';
   }
 
   @override
@@ -36,25 +36,17 @@ class _SampleForm2State extends State<SampleForm2> {
                   onPressed: () => setState(() {
                         _count = 0;
                         _values = [];
-                        _result = '';
+                        // _result = '';
                       }))
             ]),
         body: Padding(
             padding: const EdgeInsets.all(8),
-            child: Column(
-              children: [
-                Flexible(
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: _count,
-                      itemBuilder: (context, index) {
-                        return _row(index);
-                      }),
-                ),
-                const SizedBox(height: 10),
-                Expanded(child: Txt(text: _result))
-              ],
-            )));
+            child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: _count,
+                itemBuilder: (context, index) {
+                  return _row(index);
+                })));
   }
 
   Widget _row(int key) {
@@ -85,14 +77,17 @@ class _SampleForm2State extends State<SampleForm2> {
         return map['id'] == _foundKey;
       });
     }
-    Map<String, dynamic> json = {"id": key, "value": {"text": val}};
+    Map<String, dynamic> json = {
+      "id": key,
+      "value": {"text": val}
+    };
     _values.add(json);
 
-    setState(() => _result = _prettyPrint(_values));
+    //setState(() => _result = _prettyPrint(_values));
   }
 
-  String _prettyPrint(jsonObject) {
-    var encoder = const JsonEncoder.withIndent('   ');
-    return encoder.convert(jsonObject);
-  }
+  // String _prettyPrint(jsonObject) {
+  //   var encoder = const JsonEncoder.withIndent('   ');
+  //   return encoder.convert(jsonObject);
+  // }
 }
